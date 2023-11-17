@@ -31,12 +31,13 @@ class SignUp(APIView):
     def post(self, request, format=None):
         serializer=signup_serializer(data=request.data)
         try:
+            print("thr try is working")
             if serializer.is_valid():
                 serializer.save()
                 return Response(serializer.data)
         except:
+            print("exception happen")
             return Response("The data is not acceptable, check it again")
-        
         return Response("The data is not acceptable, check it again")
     
     def put(self, request, pk, format=None):
